@@ -1,23 +1,19 @@
-import React from "react";
-import Image from "next/image";
+import { MovieProps } from "@/interfaces"
+import Image from "next/image"
 
-const MovieCard: React.FC = () => {
-    return (
-        <div className="bg-white shadow-md rounded-lg overflow-hidden">
-            <Image
-                src="https://via.placeholder.com/300x450"
-                alt="Movie Poster"
-                className="w-full h-64 object-cover"
-            />
-            <div className="p-4">
-                <h2 className="text-xl font-bold mb-2">Movie Title</h2>
-                <p className="text-gray-700 mb-4">Movie description goes here. It can be a brief summary of the movie plot.</p>
-                <button className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-                    Watch Now
-                </button>
-            </div>
-        </div>
-    );
-};
+const MovieCard: React.FC<MovieProps> = ({ title, posterImage, releaseYear }) => {
+  return (
+    <div className="h-[563px]">
+      <div>
+        <Image className="h-[430px] w-full rounded-md hover:cursor-pointer" src={posterImage} width={100} height={100} alt={title} />
 
-export default MovieCard;
+      </div>
+      <div className="flex justify-between py-4">
+        <p className="text-xl font-bold">{title}</p>
+        <p className="text-xl text-[#E2D609]">{releaseYear}</p>
+      </div>
+    </div>
+  )
+}
+
+export default MovieCard
